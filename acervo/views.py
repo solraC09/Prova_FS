@@ -11,12 +11,14 @@ def inicio(request):
     return render(request, 'acervo/inicio.html')
 
 
+
 def lista_livros(request):
     livros = Livro.objects.all()
 
     nome = request.GET.get('nome', '')
     tipo = request.GET.get('tipo', '')
     categoria = request.GET.get('categoria', '')
+    status = request.GET.get('status', '')
 
     if nome:
         livros = livros.filter(Q(titulo__icontains=nome) | Q(autor__nome__icontains=nome))
@@ -24,6 +26,8 @@ def lista_livros(request):
         livros = livros.filter(tipo=tipo)
     if categoria:
         livros = livros.filter(categoria=categoria)
+    if status:
+        livros = livros.filter(exemplares__status=status).distinct()
 
     return render(request, 'acervo/lista.html', {
         'livros': livros,
@@ -32,8 +36,8 @@ def lista_livros(request):
         'filtro_nome': nome,
         'filtro_tipo': tipo,
         'filtro_categoria': categoria,
+        'filtro_status': status,
     })
-
 
 def novo_livro(request):
     if request.method == 'POST':

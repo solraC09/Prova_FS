@@ -1,5 +1,4 @@
-/* acervo/static/acervo/css/estilo.css */
-/*lista*/
+/* ===== Base ===== */
 
 body {
     font-family: 'Georgia', 'Times New Roman', serif;
@@ -16,6 +15,8 @@ h1 {
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
 }
+
+/* ===== Formulário de busca ===== */
 
 form {
     background-color: #ffffff;
@@ -53,6 +54,8 @@ form button:hover {
     background-color: #8b5e34;
 }
 
+/* ===== Tabela ===== */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -82,7 +85,26 @@ tr:hover {
     background-color: #eee0c4;
 }
 
-/* Página inicial */
+table a {
+    color: #5c3a21;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 0.75rem;
+    border-bottom: 1px dashed #8b5e34;
+}
+
+table a:hover {
+    color: #8b5e34;
+}
+
+table td[colspan] {
+    text-align: center;
+    font-style: italic;
+    color: #8a7660;
+    padding: 1.5rem;
+}
+
+/* ===== Página inicial ===== */
 
 .pagina-inicial {
     display: flex;
@@ -99,32 +121,33 @@ tr:hover {
     margin-bottom: 2rem;
 }
 
-
 .botoes-inicial {
     display: flex;
     gap: 1rem;
 }
 
+/* ===== Botões ===== */
 
 .botao-principal {
+    display: inline-block;
     font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 1.1rem;
-    background-color: transparent;
-    color: #5c3a21;
+    background-color: #5c3a21;
+    color: #f4ecd8 !important;
     text-decoration: none;
     padding: 0.8rem 2rem;
     border-radius: 4px;
     border: 2px solid #8b5e34;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    margin-bottom: 20px;
+    transition: background-color 0.2s ease;
+    margin-bottom: 1.5rem;
 }
 
 .botao-principal:hover {
     background-color: #8b5e34;
 }
 
-
 .botao-secundario {
+    display: inline-block;
     font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 1.1rem;
     background-color: transparent;
@@ -141,7 +164,7 @@ tr:hover {
     color: #f4ecd8;
 }
 
-/* Formulário de cadastro */
+/* ===== Formulário de cadastro ===== */
 
 .pagina-form {
     max-width: 500px;
@@ -184,12 +207,13 @@ tr:hover {
     margin-top: 0.5rem;
 }
 
-/* ===== Navegação simples entre seções ===== */
+/* ===== Navegação entre seções ===== */
 
 .nav-secoes {
     display: flex;
     gap: 1rem;
     margin-bottom: 1.5rem;
+    margin-top: 1rem;
     flex-wrap: wrap;
 }
 
@@ -208,21 +232,11 @@ tr:hover {
     background-color: #eee0c4;
 }
 
-/* ===== Ações dentro da tabela (Emprestar, Devolver, Apagar...) ===== */
-
-table a {
-    color: #5c3a21;
-    text-decoration: none;
-    font-weight: bold;
-    margin-right: 0.75rem;
-    border-bottom: 1px dashed #8b5e34;
+.conteudo {
+    padding: 0 1rem;
 }
 
-table a:hover {
-    color: #8b5e34;
-}
-
-/* ===== Badge de status do exemplar ===== */
+/* ===== Status badge ===== */
 
 .status-badge {
     display: inline-block;
@@ -247,31 +261,7 @@ table a:hover {
     color: #5b2c7a;
 }
 
-/* ===== Multa em destaque na tabela de atrasados ===== */
-
 .valor-multa {
     color: #8b1a1a;
     font-weight: bold;
-}
-
-/* ===== Título de contagem/estado vazio ===== */
-
-table td[colspan] {
-    text-align: center;
-    font-style: italic;
-    color: #8a7660;
-    padding: 1.5rem;
-}
-
-.conteudo {
-    padding: 0 1rem;
-}
-
-.botao-principal {
-    display: inline-block;
-    margin-bottom: 1.5rem;
-}
-
-.nav-secoes {
-    margin-top: 1rem;
 }

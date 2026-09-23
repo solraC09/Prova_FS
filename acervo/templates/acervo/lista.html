@@ -6,7 +6,7 @@
 <h1>Acervo</h1>
 
 <form method="get">
-    <input type="text" name="nome" placeholder="Buscar por título" value="{{ filtro_nome }}">
+    <input type="text" name="nome" placeholder="Buscar por título ou autor" value="{{ filtro_nome }}">
     <select name="tipo">
         <option value="">Todos os tipos</option>
         {% for valor, rotulo in tipos %}
@@ -18,6 +18,11 @@
         {% for valor, rotulo in categorias %}
             <option value="{{ valor }}" {% if valor == filtro_categoria %}selected{% endif %}>{{ rotulo }}</option>
         {% endfor %}
+    </select>
+    <select name="status">
+        <option value="">Qualquer status</option>
+        <option value="disponivel" {% if filtro_status == 'disponivel' %}selected{% endif %}>Disponível</option>
+        <option value="emprestado" {% if filtro_status == 'emprestado' %}selected{% endif %}>Emprestado</option>
     </select>
     <button type="submit">Buscar</button>
 </form>
