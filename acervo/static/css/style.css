@@ -266,3 +266,12 @@ table td[colspan] {
 .conteudo {
     padding: 0 1rem;
 }
+
+.botao-principal {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.nav-secoes {
+    margin-top: 1rem;
+}
