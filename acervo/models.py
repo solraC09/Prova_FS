@@ -1,6 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User  # ou seu próprio model de usuário, se já tiver
-from datetime import timedelta
 
 
 class Autor(models.Model):
@@ -81,7 +79,7 @@ class Emprestimo(models.Model):
     @property
     def calcular_multa(self):
         from django.utils import timezone
-        VALOR_MULTA_POR_DIA = 1.50  
+        VALOR_MULTA_POR_DIA = 1.50
 
         data_referencia = self.data_devolucao or timezone.now().date()
         dias_atraso = (data_referencia - self.data_prevista_devolucao).days
@@ -98,7 +96,7 @@ class Reserva(models.Model):
     atendida = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['data_reserva'] 
+        ordering = ['data_reserva']
 
     def __str__(self):
         return f'{self.membro} aguardando {self.exemplar}'

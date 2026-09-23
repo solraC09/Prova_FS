@@ -200,3 +200,26 @@ def reservar_exemplar(request, exemplar_id):
 def lista_reservas(request):
     reservas = Reserva.objects.filter(atendida=False).select_related('exemplar', 'membro')
     return render(request, 'acervo/reservas/lista.html', {'reservas': reservas})
+
+def lista_autores(request):
+    autores = Autor.objects.all()
+    return render(request, 'acervo/autores/lista.html', {'autores': autores})
+
+
+def novo_autor(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        Autor.objects.create(nome=nome)
+        return redirect('lista_autores')
+
+    return render(request, 'acervo/autores/form.html')
+
+
+def apagar_autor(request, id):
+    autor = get_object_or_404(Autor, id=id)
+
+    if request.method == 'POST':
+        autor.delete()
+        return redirect('lista_autores')
+
+    return render(request, 'acervo/confirmar_exclusao.html', {'objeto': autor})
