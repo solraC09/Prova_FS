@@ -1,13 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Emprestar Exemplar</title>
-    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
-</head>
-<body>
+{% extends 'acervo/base.html' %}
 
+{% block titulo %}Emprestar Exemplar{% endblock %}
+
+{% block conteudo %}
 <div class="pagina-form">
     <h1>Emprestar: {{ exemplar.livro.titulo }}</h1>
     <form method="post" class="form-livro">
@@ -23,6 +18,4 @@
         <button type="submit" class="botao-principal">Confirmar Empréstimo</button>
     </form>
 </div>
-
-</body>
-</html>
+{% endblock %}

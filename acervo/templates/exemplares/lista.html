@@ -1,13 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Exemplares</title>
-    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
-</head>
-<body>
+{% extends 'acervo/base.html' %}
 
+{% block titulo %}Exemplares{% endblock %}
+
+{% block conteudo %}
 <h1>Exemplares</h1>
 <a href="{% url 'novo_exemplar' %}" class="botao-principal">Novo Exemplar</a>
 
@@ -17,7 +12,7 @@
     <tr>
         <td>{{ exemplar.livro.titulo }}</td>
         <td>{{ exemplar.codigo_patrimonio }}</td>
-        <td>{{ exemplar.get_status_display }}</td>
+        <td><span class="status-badge status-{{ exemplar.status }}">{{ exemplar.get_status_display }}</span></td>
         <td>
             {% if exemplar.status == 'disponivel' %}
                 <a href="{% url 'emprestar_exemplar' exemplar.id %}">Emprestar</a>
@@ -32,6 +27,4 @@
     <tr><td colspan="4">Nenhum exemplar cadastrado.</td></tr>
     {% endfor %}
 </table>
-
-</body>
-</html>
+{% endblock %}

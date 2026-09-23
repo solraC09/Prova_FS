@@ -1,13 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Novo Membro</title>
-    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
-</head>
-<body>
+{% extends 'acervo/base.html' %}
 
+{% block titulo %}Novo Membro{% endblock %}
+
+{% block conteudo %}
 <div class="pagina-form">
     <h1>Novo Membro</h1>
     <form method="post" class="form-livro">
@@ -23,6 +18,4 @@
         <button type="submit" class="botao-principal">Salvar</button>
     </form>
 </div>
-
-</body>
-</html>
+{% endblock %}

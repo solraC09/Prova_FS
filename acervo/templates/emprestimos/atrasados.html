@@ -1,13 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Empréstimos Atrasados</title>
-    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
-</head>
-<body>
+{% extends 'acervo/base.html' %}
 
+{% block titulo %}Empréstimos Atrasados{% endblock %}
+
+{% block conteudo %}
 <h1>Empréstimos Atrasados</h1>
 
 <table>
@@ -17,12 +12,10 @@
         <td>{{ emprestimo.exemplar.livro.titulo }}</td>
         <td>{{ emprestimo.membro.nome }}</td>
         <td>{{ emprestimo.data_prevista_devolucao }}</td>
-        <td>R$ {{ emprestimo.calcular_multa }}</td>
+        <td class="valor-multa">R$ {{ emprestimo.calcular_multa }}</td>
     </tr>
     {% empty %}
     <tr><td colspan="4">Nenhum empréstimo atrasado.</td></tr>
     {% endfor %}
 </table>
-
-</body>
-</html>
+{% endblock %}

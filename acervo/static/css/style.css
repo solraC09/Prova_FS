@@ -183,3 +183,86 @@ tr:hover {
     width: 100%;
     margin-top: 0.5rem;
 }
+
+/* ===== Navegação simples entre seções ===== */
+
+.nav-secoes {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-secoes a {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #5c3a21;
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    border: 1px solid #c9a876;
+    border-radius: 3px;
+    background-color: #fffdf7;
+    transition: background-color 0.2s ease;
+}
+
+.nav-secoes a:hover {
+    background-color: #eee0c4;
+}
+
+/* ===== Ações dentro da tabela (Emprestar, Devolver, Apagar...) ===== */
+
+table a {
+    color: #5c3a21;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 0.75rem;
+    border-bottom: 1px dashed #8b5e34;
+}
+
+table a:hover {
+    color: #8b5e34;
+}
+
+/* ===== Badge de status do exemplar ===== */
+
+.status-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.status-disponivel {
+    background-color: #d9e8d3;
+    color: #345c2b;
+}
+
+.status-emprestado {
+    background-color: #f0d9c0;
+    color: #7a4a1c;
+}
+
+.status-reservado {
+    background-color: #e0d3e8;
+    color: #5b2c7a;
+}
+
+/* ===== Multa em destaque na tabela de atrasados ===== */
+
+.valor-multa {
+    color: #8b1a1a;
+    font-weight: bold;
+}
+
+/* ===== Título de contagem/estado vazio ===== */
+
+table td[colspan] {
+    text-align: center;
+    font-style: italic;
+    color: #8a7660;
+    padding: 1.5rem;
+}
+
+.conteudo {
+    padding: 0 1rem;
+}

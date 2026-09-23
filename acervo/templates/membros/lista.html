@@ -1,13 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Membros</title>
-    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
-</head>
-<body>
+{% extends 'acervo/base.html' %}
 
+{% block titulo %}Membros{% endblock %}
+
+{% block conteudo %}
 <h1>Membros</h1>
 <a href="{% url 'novo_membro' %}" class="botao-principal">Novo Membro</a>
 
@@ -23,6 +18,4 @@
     <tr><td colspan="3">Nenhum membro cadastrado.</td></tr>
     {% endfor %}
 </table>
-
-</body>
-</html>
+{% endblock %}

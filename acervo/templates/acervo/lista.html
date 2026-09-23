@@ -1,44 +1,32 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Acervo da Biblioteca</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% extends 'acervo/base.html' %}
 
-<h1>Acervo da Biblioteca</h1>
+{% block titulo %}Livros{% endblock %}
+
+{% block conteudo %}
+<h1>Acervo</h1>
 
 <form method="get">
     <input type="text" name="nome" placeholder="Buscar por título" value="{{ filtro_nome }}">
-
     <select name="tipo">
         <option value="">Todos os tipos</option>
         {% for valor, rotulo in tipos %}
             <option value="{{ valor }}" {% if valor == filtro_tipo %}selected{% endif %}>{{ rotulo }}</option>
         {% endfor %}
     </select>
-
     <select name="categoria">
         <option value="">Todas as categorias</option>
         {% for valor, rotulo in categorias %}
             <option value="{{ valor }}" {% if valor == filtro_categoria %}selected{% endif %}>{{ rotulo }}</option>
         {% endfor %}
     </select>
-
     <button type="submit">Buscar</button>
 </form>
 
+<a href="{% url 'novo_livro' %}" class="botao-principal">Novo Livro</a>
 
 <table>
     <tr>
-        <th>Título</th>
-        <th>Autor</th>
-        <th>Ano</th>
-        <th>Tipo</th>
-        <th>Categoria</th>
-        <th>Disponível</th>
+        <th>Título</th><th>Autor</th><th>Ano</th><th>Tipo</th><th>Categoria</th><th>Ações</th>
     </tr>
     {% for livro in livros %}
     <tr>
@@ -47,12 +35,13 @@
         <td>{{ livro.ano }}</td>
         <td>{{ livro.get_tipo_display }}</td>
         <td>{{ livro.get_categoria_display }}</td>
-        <td>{{ livro.disponivel|yesno:"Sim,Não" }}</td>
+        <td>
+            <a href="{% url 'editar_livro' livro.id %}">Editar</a>
+            <a href="{% url 'apagar_livro' livro.id %}">Apagar</a>
+        </td>
     </tr>
     {% empty %}
     <tr><td colspan="6">Nenhum livro encontrado.</td></tr>
     {% endfor %}
 </table>
-
-</body>
-</html>
+{% endblock %}

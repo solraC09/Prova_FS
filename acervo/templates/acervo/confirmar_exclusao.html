@@ -1,22 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Confirmar Exclusão</title>
-    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
-</head>
-<body>
+{% extends 'acervo/base.html' %}
 
+{% block titulo %}Confirmar Exclusão{% endblock %}
+
+{% block conteudo %}
 <div class="pagina-form">
     <h1>Confirmar Exclusão</h1>
     <p>Tem certeza que deseja apagar <strong>{{ objeto }}</strong>?</p>
-
     <form method="post">
         {% csrf_token %}
         <button type="submit" class="botao-principal">Sim, apagar</button>
     </form>
 </div>
-
-</body>
-</html>
+{% endblock %}
