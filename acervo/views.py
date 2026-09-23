@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from datetime import timedelta
+from django.db.models import Q
 
 from .models import Livro, Autor, Exemplar, Membro, Emprestimo, Reserva
 from .forms import LivroForm
@@ -18,7 +19,7 @@ def lista_livros(request):
     categoria = request.GET.get('categoria', '')
 
     if nome:
-        livros = livros.filter(titulo__icontains=nome)
+        livros = livros.filter(Q(titulo__icontains=nome) | Q(autor__nome__icontains=nome))
     if tipo:
         livros = livros.filter(tipo=tipo)
     if categoria:
