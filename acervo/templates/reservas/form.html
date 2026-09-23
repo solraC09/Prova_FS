@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservar Exemplar</title>
+    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
+</head>
+<body>
+
+<div class="pagina-form">
+    <h1>Reservar: {{ exemplar.livro.titulo }}</h1>
+    <form method="post" class="form-livro">
+        {% csrf_token %}
+        <p>
+            <label for="membro">Membro</label>
+            <select name="membro" id="membro" required>
+                {% for membro in membros %}
+                <option value="{{ membro.id }}">{{ membro.nome }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <button type="submit" class="botao-principal">Confirmar Reserva</button>
+    </form>
+</div>
+
+</body>
+</html>

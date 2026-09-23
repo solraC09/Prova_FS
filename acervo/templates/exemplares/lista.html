@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplares</title>
+    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
+</head>
+<body>
+
+<h1>Exemplares</h1>
+<a href="{% url 'novo_exemplar' %}" class="botao-principal">Novo Exemplar</a>
+
+<table>
+    <tr><th>Livro</th><th>Código</th><th>Status</th><th>Ações</th></tr>
+    {% for exemplar in exemplares %}
+    <tr>
+        <td>{{ exemplar.livro.titulo }}</td>
+        <td>{{ exemplar.codigo_patrimonio }}</td>
+        <td>{{ exemplar.get_status_display }}</td>
+        <td>
+            {% if exemplar.status == 'disponivel' %}
+                <a href="{% url 'emprestar_exemplar' exemplar.id %}">Emprestar</a>
+            {% elif exemplar.status == 'emprestado' %}
+                <a href="{% url 'devolver_exemplar' exemplar.id %}">Devolver</a>
+                <a href="{% url 'reservar_exemplar' exemplar.id %}">Reservar</a>
+            {% endif %}
+            <a href="{% url 'apagar_exemplar' exemplar.id %}">Apagar</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4">Nenhum exemplar cadastrado.</td></tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

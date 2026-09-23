@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Membro</title>
+    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
+</head>
+<body>
+
+<div class="pagina-form">
+    <h1>Novo Membro</h1>
+    <form method="post" class="form-livro">
+        {% csrf_token %}
+        <p>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" required>
+        </p>
+        <p>
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email" required>
+        </p>
+        <button type="submit" class="botao-principal">Salvar</button>
+    </form>
+</div>
+
+</body>
+</html>

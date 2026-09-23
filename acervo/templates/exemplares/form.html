@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Exemplar</title>
+    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
+</head>
+<body>
+
+<div class="pagina-form">
+    <h1>Novo Exemplar</h1>
+    <form method="post" class="form-livro">
+        {% csrf_token %}
+        <p>
+            <label for="livro">Livro</label>
+            <select name="livro" id="livro" required>
+                {% for livro in livros %}
+                <option value="{{ livro.id }}">{{ livro.titulo }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <label for="codigo_patrimonio">Código de Patrimônio</label>
+            <input type="text" name="codigo_patrimonio" id="codigo_patrimonio" required>
+        </p>
+        <button type="submit" class="botao-principal">Salvar</button>
+    </form>
+</div>
+
+</body>
+</html>

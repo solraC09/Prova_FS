@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Fila de Reservas</title>
+    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
+</head>
+<body>
+
+<h1>Fila de Reservas</h1>
+
+<table>
+    <tr><th>Livro</th><th>Membro</th><th>Data da Reserva</th></tr>
+    {% for reserva in reservas %}
+    <tr>
+        <td>{{ reserva.exemplar.livro.titulo }}</td>
+        <td>{{ reserva.membro.nome }}</td>
+        <td>{{ reserva.data_reserva }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="3">Nenhuma reserva pendente.</td></tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

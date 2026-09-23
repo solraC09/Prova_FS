@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Empréstimos Atrasados</title>
+    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
+</head>
+<body>
+
+<h1>Empréstimos Atrasados</h1>
+
+<table>
+    <tr><th>Livro</th><th>Membro</th><th>Devolução Prevista</th><th>Multa</th></tr>
+    {% for emprestimo in emprestimos %}
+    <tr>
+        <td>{{ emprestimo.exemplar.livro.titulo }}</td>
+        <td>{{ emprestimo.membro.nome }}</td>
+        <td>{{ emprestimo.data_prevista_devolucao }}</td>
+        <td>R$ {{ emprestimo.calcular_multa }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4">Nenhum empréstimo atrasado.</td></tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Membros</title>
+    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
+</head>
+<body>
+
+<h1>Membros</h1>
+<a href="{% url 'novo_membro' %}" class="botao-principal">Novo Membro</a>
+
+<table>
+    <tr><th>Nome</th><th>E-mail</th><th>Ações</th></tr>
+    {% for membro in membros %}
+    <tr>
+        <td>{{ membro.nome }}</td>
+        <td>{{ membro.email }}</td>
+        <td><a href="{% url 'apagar_membro' membro.id %}">Apagar</a></td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="3">Nenhum membro cadastrado.</td></tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

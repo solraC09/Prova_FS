@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Autores</title>
+    <link rel="stylesheet" href="{% static 'acervo/css/estilo.css' %}">
+</head>
+<body>
+
+<h1>Autores</h1>
+<a href="{% url 'novo_autor' %}" class="botao-principal">Novo Autor</a>
+
+<table>
+    <tr><th>Nome</th><th>Ações</th></tr>
+    {% for autor in autores %}
+    <tr>
+        <td>{{ autor.nome }}</td>
+        <td><a href="{% url 'apagar_autor' autor.id %}">Apagar</a></td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="2">Nenhum autor cadastrado.</td></tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
