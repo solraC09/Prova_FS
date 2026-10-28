@@ -1,8 +1,12 @@
-{% extends 'acervo/base.html' %}
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Acervo da Biblioteca{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
 
-{% block titulo %}Início{% endblock %}
-
-{% block conteudo %}
 <div class="pagina-inicial">
     <h1>Olá, acervo!</h1>
     <div class="botoes-inicial">
@@ -10,4 +14,6 @@
         <a href="{% url 'novo_livro' %}" class="botao-secundario">Cadastrar livro</a>
     </div>
 </div>
-{% endblock %}
+
+</body>
+</html>
